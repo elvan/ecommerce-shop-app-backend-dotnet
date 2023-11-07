@@ -477,10 +477,13 @@ $RECYCLE.BIN/
 *.lnk
 
 ###
-social_dating_app.db
-social_dating_app.db-journal
-social_dating_app.db-shm
-social_dating_app.db-wal
+
+ecommerce_shop.db
+ecommerce_shop.db-journal
+ecommerce_shop.db-shm
+ecommerce_shop.db-wal
 
 ###
+
+API/appsettings.Development
 API/appsettings.json
