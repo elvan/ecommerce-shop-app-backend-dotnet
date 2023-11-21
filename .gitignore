@@ -478,12 +478,17 @@ $RECYCLE.BIN/
 
 ###
 
-ecommerce_shop.db
-ecommerce_shop.db-journal
-ecommerce_shop.db-shm
-ecommerce_shop.db-wal
+ecommerce.db
+ecommerce.db-journal
+ecommerce.db-shm
+ecommerce.db-wal
+
+identity.db
+identity.db-journal
+identity.db-shm
+identity.db-wal
 
 ###
 
-API/appsettings.Development
+API/appsettings.Development.json
 API/appsettings.json
