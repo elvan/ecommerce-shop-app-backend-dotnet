@@ -4,7 +4,6 @@ using API.Middleware;
 using Core.Entities.Identity;
 
 using Infrastructure.Data;
-
 using Infrastructure.Data.Identity;
 using Infrastructure.Identity;
 
@@ -18,6 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
+builder.Services.AddSwaggerDocumentation();
 
 var app = builder.Build();
 
@@ -26,8 +26,7 @@ app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
-app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerDocumentation();
 
 app.UseStaticFiles();
 
