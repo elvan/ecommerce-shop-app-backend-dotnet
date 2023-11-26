@@ -9,6 +9,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.13" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.33.0" />
     <PackageReference Include="StackExchange.Redis" Version="2.6.122" />
+    <PackageReference Include="Stripe.net" Version="41.28.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.33.0" />
   </ItemGroup>
 
