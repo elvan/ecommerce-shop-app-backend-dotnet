@@ -1,4 +1,6 @@
-﻿using API.DTOs;
+﻿using System.Security.Claims;
+
+using API.DTOs;
 using API.Extensions;
 
 using Core.Entities;
@@ -58,7 +60,8 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
             user.FirstName,
             user.LastName,
             user.Email,
-            Address = user.Address?.ToDto()
+            Address = user.Address?.ToDto(),
+            Roles = User.FindFirstValue(ClaimTypes.Role)
         });
     }
 
@@ -88,5 +91,21 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
         if (!result.Succeeded) return BadRequest("Problem updating user address");
 
         return Ok(user.Address.ToDto());
+    }
+
+    [Authorize]
+    [HttpPost("reset-password")]
+    public async Task<ActionResult> ResetPassword(string currentPassword, string newPassword)
+    {
+        var user = await signInManager.UserManager.GetUserByEmail(User);
+
+        var result = await signInManager.UserManager.ChangePasswordAsync(user, currentPassword, newPassword);
+
+        if (result.Succeeded)
+        {
+            return Ok("Password updated");
+        }
+
+        return BadRequest("Failed to update password");
     }
 }
